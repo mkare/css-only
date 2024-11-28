@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         nested: resolve(__dirname, "nested/index.html"),
+        "window-size": resolve(__dirname, "window-size/index.html"),
       },
     },
   },

@@ -1,0 +1,44 @@
+body {
+  font-family: "Rubik Variable", sans-serif;
+  background-color: #6d214f;
+  color: #f1f2f6;
+  padding: 0 1rem;
+}
+
+/* Get the screen width and height as pixel values using a few lines of CSS. */
+/* Powered by @property & trigonometric functions */
+/* Updates on screen resize (No need for JavaScript) */
+
+/* Define a custom property for raw width */
+@property --w_raw {
+  /* The property expects a length value */
+  syntax: "<length>";
+  /* This property can be inherited by child elements */
+  inherits: true;
+  /* Initial value is set to the full viewport width */
+  initial-value: 100vw;
+}
+
+/* Define a custom property for raw height */
+@property --h_raw {
+  /* The property expects a length value */
+  syntax: "<length>";
+  /* This property can be inherited by child elements */
+  inherits: true;
+  /* Initial value is set to the full viewport height */
+  initial-value: 100vh;
+}
+
+:root {
+  /* Convert the width from pixels to a unitless number using trigonometry */
+  --w: tan(atan2(var(--w_raw), 1px));
+  /* Convert the height from pixels to a unitless number using trigonometry */
+  --h: tan(atan2(var(--h_raw), 1px));
+}
+
+body::after {
+  /* Display the width and height in the format 'width x height' */
+  content: counter(w) "x" counter(h);
+  /* Reset counters with the calculated width and height */
+  counter-reset: h var(--h) w var(--w);
+}
