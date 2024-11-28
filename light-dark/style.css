@@ -1,0 +1,84 @@
+:root {
+  /* Enabling light mode and dark mode */
+  color-scheme: light dark;
+
+  /* Assigning light/dark color tokens into variable */
+  --text-heading: light-dark(#333333, #f0f0f0);
+  --text-body: light-dark(rgba(0, 0, 0, 0.7), #e0e0e0);
+  --background-primary: light-dark(#ffc6c6, #6d214f);
+  --background-secondary: light-dark(#fffef3, #182c61);
+}
+
+body {
+  font-family: "Rubik Variable", sans-serif;
+  padding: 0 1rem;
+  /* Consuming the color tokens */
+  /* Use the color variables defined in :root */
+  background-color: var(--background-primary);
+  color: var(--text-body);
+
+  /* color-scheme: light dark; 
+  color: light-dark(#6d214f, #fff);
+  background-color: light-dark(
+    #fff,
+    #6d214f
+  ); */
+}
+
+html[data-theme="dark"] body {
+  color-scheme: dark;
+}
+
+html[data-theme="light"] body {
+  color-scheme: light;
+}
+
+section {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  /* Consuming the color tokens */
+  background-color: var(--background-secondary);
+  color: var(--text-body);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.dark-section {
+  color-scheme: dark;
+}
+
+.light-section {
+  color-scheme: light;
+}
+
+/* toggle theme */
+
+.theme-toggle input {
+  display: none;
+}
+
+.theme-toggle label {
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+}
+
+.theme-toggle label:hover {
+  cursor: pointer;
+}
+
+.theme-toggle label:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle input:checked + label span:last-child {
+  display: none;
+}
+
+.theme-toggle input:checked + label span:first-child {
+  display: inline;
+}
+
+.theme-toggle label span:first-child {
+  display: none;
+}
